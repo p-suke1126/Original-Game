@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class UsagiControll : MonoBehaviour
+public class closeUsagicontroll : MonoBehaviour
 {
     //アニメーションするためのコンポーネントを入れる
     Animator animator;
@@ -13,6 +13,7 @@ public class UsagiControll : MonoBehaviour
     float Velocity = 7;
 
     private float turnForce = 10;  /// 左右移動の力
+
 
     // Use this for initialization
     void Start()
@@ -28,11 +29,14 @@ public class UsagiControll : MonoBehaviour
     void Update()
     {
         // クリックされた場合
-        if (Input.GetMouseButton(0)){
-//            this.transform.Translate(0,0,1);
+        if (Input.GetMouseButton(0))
+        {
+            this.transform.Translate(0, 0, -1);
             this.rigid2D.AddForce(Vector2.down * Velocity, ForceMode2D.Force);
         }
-        else if (/*Input.GetMouseButton(1) &&*/ rigid2D.velocity.y < -1f){
+        else if (/*Input.GetMouseButton(1) &&*/ rigid2D.velocity.y < -1f)
+        {
+            this.transform.Translate(0,0,1);
             this.rigid2D.AddForce(Vector3.up * Velocity, ForceMode2D.Force);
         }
 
@@ -46,6 +50,6 @@ public class UsagiControll : MonoBehaviour
         {
             //右に移動
             this.rigid2D.AddForce(Vector2.right * this.turnForce, ForceMode2D.Force);
-        } 
+        }
     }
 }
